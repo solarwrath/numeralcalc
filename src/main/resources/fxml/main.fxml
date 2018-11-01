@@ -24,58 +24,63 @@
     <children>
         <AnchorPane prefHeight="800.0" prefWidth="800.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <children>
-                <ComboBox fx:id="numberQuantity" layoutX="102.0" layoutY="6.0" prefWidth="150.0" visibleRowCount="7"/>
-                <Label layoutX="10.0" layoutY="10.0" text="Кількість чисел:"/>
-                <AnchorPane fx:id="number1Pane" layoutX="10.0" layoutY="50.0" prefHeight="67.0" prefWidth="572.0">
+                <AnchorPane layoutX="10.0" layoutY="10.0">
                     <children>
-                        <Label text="Число 1:">
-                            <padding>
-                                <Insets top="3.0"/>
-                            </padding>
-                        </Label>
-                        <TextField fx:id="number1TextField" layoutX="57.0"/>
-                        <Label layoutX="257.0" text="Система числення:">
-                            <padding>
-                                <Insets top="3.0"/>
-                            </padding>
-                        </Label>
-                        <ComboBox fx:id="number1BaseComboBox" layoutX="373.0" prefWidth="150.0"/>
-                        <Label fx:id="number1BaseIntegerLabel" layoutX="257.0" layoutY="35.0" text="Яка?(число):"
-                               visible="false">
-                            <padding>
-                                <Insets top="3.0"/>
-                            </padding>
-                        </Label>
-                        <TextField fx:id="number1BaseInteger" layoutX="373.0" layoutY="33.0" visible="false"/>
+                        <AnchorPane fx:id="number1Pane" prefHeight="67.0" prefWidth="572.0">
+                            <children>
+                                <Label text="Число 1:">
+                                    <padding>
+                                        <Insets top="3.0"/>
+                                    </padding>
+                                </Label>
+                                <TextField fx:id="number1TextField" layoutX="57.0"/>
+                                <Label layoutX="257.0" text="Система числення:">
+                                    <padding>
+                                        <Insets top="3.0"/>
+                                    </padding>
+                                </Label>
+                                <ComboBox fx:id="number1BaseComboBox" layoutX="373.0" prefWidth="150.0"/>
+                                <Label fx:id="number1BaseIntegerLabel" layoutX="257.0" layoutY="35.0"
+                                       text="Яка?(число):" visible="false">
+                                    <padding>
+                                        <Insets top="3.0"/>
+                                    </padding>
+                                </Label>
+                                <TextField fx:id="number1BaseInteger" layoutX="373.0" layoutY="33.0" visible="false"/>
+                                <ComboBox fx:id="operation1" layoutX="57.0" layoutY="35.0" prefWidth="150.0"
+                                          visibleRowCount="7"/>
+                                <Label fx:id="operation1Label" layoutY="39.0" text="Операція:"/>
+                            </children>
+                        </AnchorPane>
+                        <CheckBox fx:id="sameBaseCheckBox" layoutX="253.0" layoutY="71.0" mnemonicParsing="false"
+                                  text="Інше число цієї ж системи числення"/>
+                        <AnchorPane fx:id="number2Pane" layoutY="98.0" prefHeight="67.0" prefWidth="572.0">
+                            <children>
+                                <Label text="Число 2">
+                                    <padding>
+                                        <Insets top="3.0"/>
+                                    </padding>
+                                </Label>
+                                <TextField fx:id="number2TextField" layoutX="57.0"/>
+                                <Label fx:id="base2Label" layoutX="257.0" text="Система числення:">
+                                    <padding>
+                                        <Insets top="3.0"/>
+                                    </padding>
+                                </Label>
+                                <ComboBox fx:id="number2BaseComboBox" layoutX="373.0" prefWidth="150.0"/>
+                                <Label fx:id="number2BaseIntegerLabel" layoutX="257.0" layoutY="35.0"
+                                       text="Яка?(число):" visible="false">
+                                    <padding>
+                                        <Insets top="3.0"/>
+                                    </padding>
+                                </Label>
+                                <TextField fx:id="number2BaseInteger" layoutX="373.0" layoutY="33.0" visible="false"/>
+                            </children>
+                        </AnchorPane>
+                        <Button fx:id="computeButton" layoutY="175.0" mnemonicParsing="false" text="Обчислити"/>
+                        <Label fx:id="resultLabel" layoutX="92.0" layoutY="179.0"/>
                     </children>
                 </AnchorPane>
-                <CheckBox fx:id="sameBaseCheckBox" layoutX="263.0" layoutY="121.0" mnemonicParsing="false"
-                          text="Інші числа цієї ж системи числення"/>
-                <AnchorPane fx:id="number2Pane" layoutX="10.0" layoutY="148.0" prefHeight="67.0" prefWidth="572.0">
-                    <children>
-                        <Label text="Число 2">
-                            <padding>
-                                <Insets top="3.0"/>
-                            </padding>
-                        </Label>
-                        <TextField fx:id="number2TextField" layoutX="57.0"/>
-                        <Label fx:id="base2Label" layoutX="257.0" text="Система числення:">
-                            <padding>
-                                <Insets top="3.0"/>
-                            </padding>
-                        </Label>
-                        <ComboBox fx:id="number2BaseComboBox" layoutX="373.0" prefWidth="150.0"/>
-                        <Label fx:id="number2BaseIntegerLabel" layoutX="257.0" layoutY="35.0" text="Яка?(число):"
-                               visible="false">
-                            <padding>
-                                <Insets top="3.0"/>
-                            </padding>
-                        </Label>
-                        <TextField fx:id="number2BaseInteger" layoutX="373.0" layoutY="33.0" visible="false"/>
-                    </children>
-                </AnchorPane>
-                <Button fx:id="computeButton" layoutX="10.0" layoutY="225.0" mnemonicParsing="false" text="Обчислити"/>
-                <Label fx:id="resultLabel" layoutX="102.0" layoutY="229.0"/>
             </children>
         </AnchorPane>
     </children>

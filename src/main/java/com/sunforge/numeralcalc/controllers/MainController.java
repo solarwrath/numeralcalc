@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.*;
 import java.util.function.BiConsumer;
 
+import com.sunforge.numeralcalc.computations.MainHandler;
+import com.sunforge.numeralcalc.computations.Operation;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -15,9 +17,6 @@ public class MainController {
 
     @FXML
     private URL location;
-
-    @FXML
-    private ComboBox<String> numberQuantity;
 
     @FXML
     private AnchorPane number1Pane;
@@ -36,6 +35,12 @@ public class MainController {
 
     @FXML
     private CheckBox sameBaseCheckBox;
+
+    @FXML
+    private ComboBox<String> operation1;
+
+    @FXML
+    private Label operation1Label;
 
     @FXML
     private AnchorPane number2Pane;
@@ -71,30 +76,27 @@ public class MainController {
         predefinedBases.put("Восьмерічна", 8);
         predefinedBases.put("Десятирічна", 10);
         predefinedBases.put("Шістнадцятерічна", 16);
-        predefinedBases.put("Інша", null);
+        predefinedBases.put("Інша", -1);
 
         for (Map.Entry<String, Integer> currentPair : predefinedBases.entrySet()) {
             number1BaseComboBox.getItems().add(currentPair.getKey());
             number2BaseComboBox.getItems().add(currentPair.getKey());
         }
 
-        //Quantity initialization
-        Map<String, Integer> predefinedQuantity = new LinkedHashMap<>();
-        predefinedQuantity.put("Два", 2);
-        predefinedQuantity.put("Три", 3);
-        predefinedQuantity.put("Чотири", 4);
-        predefinedQuantity.put("П'ять", 5);
-        predefinedQuantity.put("Шість", 6);
-        predefinedQuantity.put("Сім", 7);
+        //Operation initialization
+        Map<String, Operation> predefinedOperations = new LinkedHashMap<>();
+        predefinedOperations.put("Додавання", Operation.ADDITION);
+        predefinedOperations.put("Віднімання", Operation.SUBSTRACTION);
+        predefinedOperations.put("Множення", Operation.MULTIPLICATION);
+        predefinedOperations.put("Ділення", Operation.DIVISION);
 
-        for (Map.Entry<String, Integer> currentPair : predefinedQuantity.entrySet()) {
-            numberQuantity.getItems().add(currentPair.getKey());
+        for (Map.Entry<String, Operation> currentPair : predefinedOperations.entrySet()) {
+            operation1.getItems().add(currentPair.getKey());
         }
-
         //Setting selection
-        numberQuantity.getSelectionModel().select(0);
         number1BaseComboBox.getSelectionModel().select(0);
         number2BaseComboBox.getSelectionModel().select(0);
+        operation1.getSelectionModel().select(0);
 
         //Declaring what to hide if user checks that bases are the same
         List<Control> additionalBasesList = new ArrayList<>();
@@ -123,7 +125,20 @@ public class MainController {
             }
         });
 
-        /*computeButton.setOnAction(event -> {
-        });*/
+        computeButton.setOnAction(event -> {
+            Map<Integer, Integer> numberAndBases = new LinkedHashMap<>();
+            int argsNumber1 = Integer.parseInt(number1TextField.getText());
+            int argsBase1 = predefinedBases.get(number1BaseComboBox.getSelectionModel().getSelectedItem());
+            if (argsBase1 == -1) {
+                argsBase1 = Integer.parseInt(number1BaseInteger.getText());
+            }
+            int argsNumber2 = Integer.parseInt(number1TextField.getText());
+            int argsBase2 = predefinedBases.get(number1BaseComboBox.getSelectionModel().getSelectedItem());
+            if (argsBase2 == -1) {
+                argsBase2 = Integer.parseInt(number2BaseInteger.getText());
+            }
+            Operation currentOperation = predefinedOperations.get(operation1.getSelectionModel().getSelectedItem());
+            resultLabel.setText(String.valueOf(MainHandler.compute(argsNumber1, argsBase1, argsNumber2, argsBase2, currentOperation)));
+        });
     }
 }
