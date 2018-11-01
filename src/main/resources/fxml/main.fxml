@@ -11,9 +11,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1"
-          xmlns="http://javafx.com/javafx/10.0.1" fx:controller="com.sunforge.numeralcalc.controllers.MainController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.1"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sunforge.numeralcalc.controllers.MainController">
     <columnConstraints>
         <ColumnConstraints/>
         <ColumnConstraints/>
@@ -41,12 +40,13 @@
                             </padding>
                         </Label>
                         <ComboBox fx:id="number1BaseComboBox" layoutX="373.0" prefWidth="150.0"/>
-                        <Label layoutX="257.0" layoutY="35.0" text="Яка?(число):">
+                        <Label fx:id="number1BaseIntegerLabel" layoutX="257.0" layoutY="35.0" text="Яка?(число):"
+                               visible="false">
                             <padding>
                                 <Insets top="3.0"/>
                             </padding>
                         </Label>
-                        <TextField fx:id="number1BaseInteger" layoutX="373.0" layoutY="33.0"/>
+                        <TextField fx:id="number1BaseInteger" layoutX="373.0" layoutY="33.0" visible="false"/>
                     </children>
                 </AnchorPane>
                 <CheckBox fx:id="sameBaseCheckBox" layoutX="263.0" layoutY="121.0" mnemonicParsing="false"
@@ -59,18 +59,19 @@
                             </padding>
                         </Label>
                         <TextField fx:id="number2TextField" layoutX="57.0"/>
-                        <Label layoutX="257.0" text="Система числення:">
+                        <Label fx:id="base2Label" layoutX="257.0" text="Система числення:">
                             <padding>
                                 <Insets top="3.0"/>
                             </padding>
                         </Label>
                         <ComboBox fx:id="number2BaseComboBox" layoutX="373.0" prefWidth="150.0"/>
-                        <Label layoutX="257.0" layoutY="35.0" text="Яка?(число):">
+                        <Label fx:id="number2BaseIntegerLabel" layoutX="257.0" layoutY="35.0" text="Яка?(число):"
+                               visible="false">
                             <padding>
                                 <Insets top="3.0"/>
                             </padding>
                         </Label>
-                        <TextField fx:id="number2BaseInteger" layoutX="373.0" layoutY="33.0"/>
+                        <TextField fx:id="number2BaseInteger" layoutX="373.0" layoutY="33.0" visible="false"/>
                     </children>
                 </AnchorPane>
                 <Button fx:id="computeButton" layoutX="10.0" layoutY="225.0" mnemonicParsing="false" text="Обчислити"/>
