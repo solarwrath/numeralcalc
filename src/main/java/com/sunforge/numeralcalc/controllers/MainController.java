@@ -104,7 +104,7 @@ public class MainController {
         additionalBasesList.add(base2Label);
 
         number1BaseComboBox.setOnAction(event -> {
-            if (predefinedBases.get(number1BaseComboBox.getSelectionModel().getSelectedItem()) == null) {
+            if (predefinedBases.get(number1BaseComboBox.getSelectionModel().getSelectedItem()) == -1) {
                 number1BaseIntegerLabel.setVisible(true);
                 number1BaseInteger.setVisible(true);
             } else {
@@ -133,7 +133,7 @@ public class MainController {
                 argsBase1 = Integer.parseInt(number1BaseInteger.getText());
             }
             int argsNumber2 = Integer.parseInt(number1TextField.getText());
-            int argsBase2 = predefinedBases.get(number1BaseComboBox.getSelectionModel().getSelectedItem());
+            int argsBase2 = predefinedBases.get(number2BaseComboBox.getSelectionModel().getSelectedItem());
             if (argsBase2 == -1) {
                 argsBase2 = Integer.parseInt(number2BaseInteger.getText());
             }
