@@ -102,6 +102,8 @@ public class MainController {
         List<Control> additionalBasesList = new ArrayList<>();
         additionalBasesList.add(number2BaseComboBox);
         additionalBasesList.add(base2Label);
+        additionalBasesList.add(number2BaseIntegerLabel);
+        additionalBasesList.add(number2BaseInteger);
 
         number1BaseComboBox.setOnAction(event -> {
             if (predefinedBases.get(number1BaseComboBox.getSelectionModel().getSelectedItem()) == -1) {
@@ -110,6 +112,17 @@ public class MainController {
             } else {
                 number1BaseIntegerLabel.setVisible(false);
                 number1BaseInteger.setVisible(false);
+            }
+        });
+
+
+        number2BaseComboBox.setOnAction(event -> {
+            if (predefinedBases.get(number2BaseComboBox.getSelectionModel().getSelectedItem()) == -1) {
+                number2BaseIntegerLabel.setVisible(true);
+                number2BaseInteger.setVisible(true);
+            } else {
+                number2BaseIntegerLabel.setVisible(false);
+                number2BaseInteger.setVisible(false);
             }
         });
 
@@ -122,21 +135,26 @@ public class MainController {
                 for (Control currentControl : additionalBasesList) {
                     currentControl.setVisible(true);
                 }
+                if (predefinedBases.get(number2BaseComboBox.getSelectionModel().getSelectedItem()) != -1) {
+                    number2BaseInteger.setVisible(false);
+                    number2BaseIntegerLabel.setVisible(false);
+                }
             }
         });
 
         computeButton.setOnAction(event -> {
-            Map<Integer, Integer> numberAndBases = new LinkedHashMap<>();
             int argsNumber1 = Integer.parseInt(number1TextField.getText());
             int argsBase1 = predefinedBases.get(number1BaseComboBox.getSelectionModel().getSelectedItem());
             if (argsBase1 == -1) {
                 argsBase1 = Integer.parseInt(number1BaseInteger.getText());
             }
+
             int argsNumber2 = Integer.parseInt(number1TextField.getText());
             int argsBase2 = predefinedBases.get(number2BaseComboBox.getSelectionModel().getSelectedItem());
             if (argsBase2 == -1) {
                 argsBase2 = Integer.parseInt(number2BaseInteger.getText());
             }
+
             Operation currentOperation = predefinedOperations.get(operation1.getSelectionModel().getSelectedItem());
             resultLabel.setText(String.valueOf(MainHandler.compute(argsNumber1, argsBase1, argsNumber2, argsBase2, currentOperation)));
         });
